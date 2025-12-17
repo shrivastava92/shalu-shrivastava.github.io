@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shalu Shrivastava - Technical Sales Engineer</title>
+    <style>
+        :root {
+            --color-primary: #00d9ff;
+            --color-secondary: #ff006e;
+            --color-accent: #8338ec;
+            --color-bg-dark: #0a0e27;
+            --color-bg-light: #16213e;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #b0b0b0;
+            --color-success: #06ffa5;
+            --color-warning: #ffb703;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--color-bg-dark) 0%, #1a1a2e 100%);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(131, 56, 236, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.2), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(131, 56, 236, 0.2), transparent);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -2px;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(0, 217, 255, 0.4), 0 0 40px rgba(131, 56, 236, 0.2);
+                filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.3));
+            }
+            50% { 
+                text-shadow: 0 0 40px rgba(0, 217, 255, 0.6), 0 0 60px rgba(131, 56, 236, 0.4);
+                filter: drop-shadow(0 0 25px rgba(131, 56, 236, 0.5));
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: var(--color-bg-dark);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(22, 33, 62, 0.8);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-category:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(131, 56, 236, 0.1));
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: var(--color-primary);
+        }
+
+        /* Projects, AI-QA and Awards styles removed for this resume */
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(22, 33, 62, 0.8);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        .contact-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .timeline-item:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-line {
+                left: 15px;
+            }
+
+            /* removed QA input layout */
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .loading-dots span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--color-text-secondary);
+            margin-top: 3rem;
+        }
+
+        /* Project modal styles removed */
+        /* Toast / feedback */
+        .toast {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            background: rgba(10,14,39,0.95);
+            color: var(--color-text-primary);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,217,255,0.06);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+            z-index: 3000;
+            display: none;
+            font-weight: 600;
+        }
+
+        /* Light theme overrides */
+        body.light {
+            --color-bg-dark: #f7fbff;
+            --color-bg-light: #ffffff;
+            --color-text-primary: #061024;
+            --color-text-secondary: #334155;
+            background: linear-gradient(135deg, #f7fbff 0%, #ffffff 100%);
+            color: var(--color-text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button id="themeToggle" class="btn btn-secondary" style="padding:8px 14px;">🌗</button></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Shalu Shrivastava</h1>
+            <p>Professional Resume</p>
+            <p style="font-size: 1rem; margin-top: 1rem;">View or download Shalu's resume using the buttons below.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('qa').scrollIntoView({behavior: 'smooth'})">Ask Me Anything</button>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <button id="downloadResumeBtn" class="btn btn-secondary">Download Resume</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume viewer (embedded PDF) -->
+    <section id="resumeViewer" style="padding:2rem 1rem; max-width:1000px; margin:0 auto;">
+        <h2 class="section-title">Resume</h2>
+        <div style="background: rgba(10,14,39,0.6); border-radius:12px; padding:12px; border:1px solid rgba(0,217,255,0.08);">
+            <iframe src="Shalu_resume.pdf" style="width:100%; height:720px; border:0;" title="Shalu Resume PDF"></iframe>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Core Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SFDC — Expert</span>
+                    <span class="skill-tag">SAP — Expert</span>
+                    <span class="skill-tag">OMP — Expert</span>
+                    <span class="skill-tag">CRM — Expert</span>
+                    <span class="skill-tag">Order Management — Expert</span>
+                    <span class="skill-tag">Customer Service — Expert</span>
+                    <span class="skill-tag">Sales — Expert</span>
+                    <span class="skill-tag">Problem Solving — Expert</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section id="summary">
+        <h2 class="section-title">Professional Summary</h2>
+        <div style="background: rgba(22,33,62,0.8); border-radius:12px; padding:1.5rem; border:1px solid rgba(0,217,255,0.06);">
+            <p style="color:var(--color-text-secondary); font-size:1rem; white-space:pre-line;">Technical Support Sales Engineer with experience in customer support, order management, and offer creation. Adept at handling client inquiries, managing end-to-end order processes, and providing tailored technical solutions. Strong communicator with a customer-focused approach. Currently working since September 2023, delivering efficient support and contributing to sales growth.</p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div style="display:grid;gap:1.25rem;">
+            <div style="background: rgba(22,33,62,0.8); padding:1rem; border-radius:10px; border:1px solid rgba(0,217,255,0.06);">
+                <h3 style="color:var(--color-primary); margin-bottom:0.25rem;">Technical Support Engineer</h3>
+                <div style="color:var(--color-text-secondary); font-size:0.95rem; margin-bottom:0.5rem;"><strong>Lapp India Pvt Ltd</strong> — Bengaluru, India • September 2023 - Now</div>
+                <ul style="color:var(--color-text-secondary); line-height:1.6;">
+                    <li>Engage with existing customers through calls to provide quotations and drive sales.</li>
+                    <li>Manage end-to-end order process including customer support, order management, and delivery coordination.</li>
+                    <li>Provide comprehensive technical support and collaborate with cross-functional teams.</li>
+                    <li>Proficient in SAP, OMP, SFDC and CRM tools; track buying behaviour from lead source to order fulfillment.</li>
+                </ul>
+            </div>
+
+            <div style="background: rgba(22,33,62,0.8); padding:1rem; border-radius:10px; border:1px solid rgba(0,217,255,0.06);">
+                <h3 style="color:var(--color-primary); margin-bottom:0.25rem;">Business Development Associate</h3>
+                <div style="color:var(--color-text-secondary); font-size:0.95rem; margin-bottom:0.5rem;"><strong>Byjus</strong> — Bengaluru, India • November 2022 - February 2023</div>
+                <ul style="color:var(--color-text-secondary); line-height:1.6;">
+                    <li>Identified business opportunities, generated leads, and built client relationships.</li>
+                    <li>Supported sales strategies, performed market research, and helped drive revenue growth.</li>
+                    <li>Collaborated with internal teams to deliver client solutions and ensure customer satisfaction.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div style="background: rgba(22,33,62,0.8); padding:1rem; border-radius:10px; border:1px solid rgba(0,217,255,0.06);">
+            <h3 style="color:var(--color-primary); margin-bottom:0.25rem;">Lakshmi Narain College of Technology (LNCT)</h3>
+            <div style="color:var(--color-text-secondary);">B.Tech in Electrical and Electronics Engineering — 2018 - 2022 • GPA: 8.2</div>
+            <p style="color:var(--color-text-secondary); margin-top:0.5rem;">Gained hands-on experience in circuit design, power systems, and automation through academic projects and labs. Participated in technical workshops and internships, building strong problem-solving and teamwork skills.</p>
+        </div>
+    </section>
+
+    <!-- Other Activities -->
+    <section id="other-activities">
+        <h2 class="section-title">Other Activities</h2>
+        <div style="background: rgba(22,33,62,0.8); padding:1rem; border-radius:10px; border:1px solid rgba(0,217,255,0.06);">
+            <h3 style="color:var(--color-primary); margin-bottom:0.25rem;">Radio Jockey — LNCT Radio</h3>
+            <div style="color:var(--color-text-secondary);">India, Bhopal • April 2020 - April 2022</div>
+            <p style="color:var(--color-text-secondary); margin-top:0.5rem;">Led interviews with students, faculty, and judges during college events, managed content for the official Instagram page, and developed strong communication and media handling skills.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">📍 Location</h3>
+                <p>Bengaluru, India</p>
+            </div>
+
+            <div class="contact-item">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">📞 Phone</h3>
+                <a href="tel:+919340927416">+91 93409 27416</a>
+            </div>
+
+            <div class="contact-item">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">✉️ Email</h3>
+                    <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+                        <a id="contactEmailLink" href="mailto:shalushrivatsva0412@gamil.com">shalushrivatsva0412@gamil.com</a>
+                        <button id="copyEmailBtn" class="btn btn-secondary" style="padding:6px 10px;font-size:0.85rem;">Copy</button>
+                    </div>
+            </div>
+
+            <div class="contact-item">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">🔗 LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/shalu-shrivastava/" target="_blank">Connect</a>
+            </div>
+
+            <!-- <div class="contact-item">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">📝 Medium</h3>
+                <a href="#" target="_blank">Articles</a>
+            </div> -->
+
+            <!-- <div class="contact-item">
+                <h3 style="color: var(--color-primary); margin-bottom: 1rem;">💻 GitHub</h3>
+                <a href="https://github.com" target="_blank">Check my code</a>
+            </div> -->
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Ready to collaborate or discuss opportunities?</p>
+            <a href="mailto:shalushrivatsva0412@gamil.com" class="btn btn-primary">Start a Conversation</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Shalu. All rights reserved.</p>
+    </footer>
+
+    <div id="siteToast" class="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        // (AI Q&A removed — not part of this resume)
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add scroll animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Animate expertise bars on scroll
+        const animateExpertiseBars = () => {
+            const bars = document.querySelectorAll('.expertise-bar-fill');
+            bars.forEach(bar => {
+                const width = bar.parentElement.parentElement.getAttribute('data-width');
+                if (width) {
+                    bar.style.width = width + '%';
+                }
+            });
+        };
+
+        setTimeout(animateExpertiseBars, 500);
+
+        /* ---------- New helper features: theme, resume, filters, copy-email ---------- */
+        function showToast(message, duration = 2200) {
+            const toast = document.getElementById('siteToast');
+            if (!toast) return;
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, duration);
+        }
+
+        // Theme toggle
+        function applyTheme(theme) {
+            if (theme === 'light') document.body.classList.add('light');
+            else document.body.classList.remove('light');
+            const btn = document.getElementById('themeToggle');
+            if (btn) btn.textContent = theme === 'light' ? '🌞' : '🌗';
+        }
+
+        function toggleTheme() {
+            const isLight = document.body.classList.toggle('light');
+            const theme = isLight ? 'light' : 'dark';
+            localStorage.setItem('siteTheme', theme);
+            applyTheme(theme);
+            showToast(theme === 'light' ? 'Light theme enabled' : 'Dark theme enabled');
+        }
+
+        function initTheme() {
+            const saved = localStorage.getItem('siteTheme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+            applyTheme(theme);
+        }
+
+        // Resume download logging
+        function downloadResume() {
+            // trigger browser download using the attached resume file
+            const link = document.createElement('a');
+            link.href = 'Shalu_resume.pdf';
+            link.setAttribute('download', 'Shalu_Resume.pdf');
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            // log locally (analytics can be added later)
+            const key = 'resumeDownloads';
+            const prev = parseInt(localStorage.getItem(key) || '0', 10);
+            localStorage.setItem(key, String(prev + 1));
+            showToast('Resume download started');
+        }
+
+        // Copy email to clipboard
+        async function copyEmail() {
+            const email = document.getElementById('contactEmailLink')?.textContent?.trim();
+            if (!email) return showToast('Email not found');
+            try {
+                await navigator.clipboard.writeText(email);
+                showToast('Email copied to clipboard');
+            } catch (err) {
+                // fallback
+                const ta = document.createElement('textarea');
+                ta.value = email;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                ta.remove();
+                showToast('Email copied to clipboard');
+            }
+        }
+
+        // (project filters removed — not applicable to this resume)
+
+        // Initialize bindings
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+
+            const themeBtn = document.getElementById('themeToggle');
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+            const resumeBtn = document.getElementById('downloadResumeBtn');
+            if (resumeBtn) resumeBtn.addEventListener('click', downloadResume);
+
+            const copyBtn = document.getElementById('copyEmailBtn');
+            if (copyBtn) copyBtn.addEventListener('click', copyEmail);
+
+            // No project search/tags for this resume site
+        });
+    </script>
+</body>
+</html>
